@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - SpringBootSecureApiApplication",
+            "request": "launch",
+            "mainClass": "com.eci.cosw.springbootsecureapi.SpringBootSecureApiApplication",
+            "projectName": "spring-boot-secure-api-react"
+        }
+    ]
+}

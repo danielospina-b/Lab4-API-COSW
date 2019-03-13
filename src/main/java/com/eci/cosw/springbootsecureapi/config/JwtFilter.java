@@ -2,6 +2,10 @@ package com.eci.cosw.springbootsecureapi.config;
 
 import org.springframework.web.filter.GenericFilterBean;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureException;
+
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
@@ -43,15 +47,15 @@ public class JwtFilter
 
             final String token = authHeader.substring( 7 );
 
-//            try
-//            {
-//                final Claims claims = Jwts.parser().setSigningKey( "secretkey" ).parseClaimsJws( token ).getBody();
-//                request.setAttribute( "claims", claims );
-//            }
-//            catch ( final SignatureException e )
-//            {
-//                throw new ServletException( "Invalid token" );
-//            }
+           try
+           {
+               final Claims claims = Jwts.parser().setSigningKey( "secretkey" ).parseClaimsJws( token ).getBody();
+               request.setAttribute( "claims", claims );
+           }
+           catch ( final SignatureException e )
+           {
+               throw new ServletException( "Invalid token" );
+           }
 
             filterChain.doFilter( servletRequest, response );
         }
