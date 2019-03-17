@@ -17,8 +17,6 @@ public class User
 
     private String lastname;
 
-    private String username;
-
 
     public User()
     {
@@ -81,16 +79,6 @@ public class User
     public void setLastname( String lastname )
     {
         this.lastname = lastname;
-    }
-
-    public String getUsername()
-    {
-        return username;
-    }
-
-    public void setUsername( String username )
-    {
-        this.username = username;
     }
 
     @Override

@@ -21,14 +21,14 @@ public class UserServiceImpl
 
 
     @Autowired
-    public UserServiceImpl()
-    {
+    public UserServiceImpl() {
     }
 
     @PostConstruct
     private void populateSampleData()
     {
-        users.add( new User( "test@mail.com", "password", "Andres", "Perez" ) );
+        users.add(new User("test@mail.com", "password", "Andres", "Perez"));
+        users.add(new User("admin", "admin", "admin", "admin"));
     }
 
 
@@ -45,15 +45,20 @@ public class UserServiceImpl
     }
 
     @Override
-    public User createUser( User user )
-    {
-        return users.get( 0 );
+    public User createUser(User user){
+        users.add(user);
+        return user;
     }
 
     @Override
     public User findUserByEmail( String email )
     {
-        return users.get( 0 );
+        for (User user : users) {
+            if (user.getEmail().equals(email)) {
+                return user;
+            }
+        }
+        return new User("user@unknown", "unknown", "unknown", "unknown");
     }
 
     @Override
