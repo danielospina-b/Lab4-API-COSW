@@ -20,7 +20,7 @@ import javax.servlet.ServletException;
  * @author Santiago Carrillo
  * 8/21/17.
  */
-@CrossOrigin(origins = {"http://localhost:3000", "https://task-planner-cosw.firebaseapp.com/"})
+@CrossOrigin(origins = {"http://localhost:3000", "https://task-planner-cosw.firebaseapp.com"})
 @RestController
 @RequestMapping("user")
 public class UserController
