@@ -49,13 +49,13 @@ public class UserController
             throw new ServletException( "User username not found." );
         }
 
-        if ( !password.equals(user.getPassword()) && !usermail.equals(user.getEmail())) {
+        if ( password.equals(user.getPassword()) && usermail.equals(user.getEmail())) {
+            jwtToken = Jwts.builder().setSubject( usermail ).claim( "roles", "user" ).setIssuedAt( new Date() ).signWith(
+            SignatureAlgorithm.HS256, "secretkey" ).compact();
+        } 
+        else {
             throw new ServletException( "Invalid login. Please check your email and password." );
         }
-
-        jwtToken = Jwts.builder().setSubject( usermail ).claim( "roles", "user" ).setIssuedAt( new Date() ).signWith(
-            SignatureAlgorithm.HS256, "secretkey" ).compact();
-
         return new Token( jwtToken );
     }
 
